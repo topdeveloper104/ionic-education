@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon class="tuts-list"></ion-icon>
+    </button>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{'stu_teaching_types.filter'|translate}}</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="getFilterTutors()" color="white">
+        <ion-icon class="ion-md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+<ion-content class="tutor-filter-background">
+  <ion-label class="text1">Explorer - Enrich - Excel</ion-label>
+  <ion-label class="text2">Everything You Need In Order To Find The Right<br/>Class For You</ion-label>
+  <ion-list>
+    <ion-item >
+      <ion-select [(ngModel)]="course" multiple="true" cancelText="No" okText="Yes" interface="popover" placeholder="Select Location" (ionChange)="changeCourse(course)">
+          <ion-option *ngFor="let course of courses" value="{{course.course_name}}" selected="{{course.checked}}" >{{course.course_name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+        <ion-select [(ngModel)]="location" multiple="true" cancelText="No" okText="Yes" interface="popover" placeholder="Type of Course" (ionChange)="changeLocation(location)">
+            <ion-option *ngFor="let location of locations" value="{{location.location_name}}" selected="{{location.checked}}" >{{location.location_name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item >
+          <ion-select [(ngModel)]="teaching" multiple="true" cancelText="No" okText="Yes" interface="popover" placeholder="Teaching Type" (ionChange)="changeTeaching(teaching)">
+              <ion-option *ngFor="let teaching of teachingTypes" value="{{teaching.teaching}}" selected="{{teaching.checked}}" >{{teaching.teaching}}</ion-option>
+          </ion-select>
+        </ion-item>
+  </ion-list>
+  <button ion-button icon-start (click)="getFilterTutors()">
+    <ion-icon name="search"></ion-icon>
+    SEARCH YOUR TEACHER
+  </button>
+</ion-content>
